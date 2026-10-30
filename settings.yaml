@@ -1,0 +1,25 @@
+# Environment-agnostic settings. Secrets never go here: use Databricks secrets (scope: mi-agent).
+catalog: workspace
+schema: market_intel
+raw_volume: raw
+
+models:
+  enrichment: databricks-gpt-oss-20b     # cheap bulk classification
+  agent: databricks-gpt-oss-120b         # reasoning over retrieved context
+  embedding: databricks-gte-large-en     # 1024 dimensions (verified in Phase 0)
+
+ai_search:
+  endpoint_name: mi-agent-search
+  index_name: gold_events_index
+
+policy:
+  # An action is only *proposed* when both thresholds are met.
+  min_importance_score: 70
+  min_confidence: 0.75
+  # Action types that may run without a human approving them. Empty on purpose.
+  auto_approve_action_types: []
+
+ingestion:
+  user_agent: "mi-agent/0.1 (personal portfolio project; contact: you@example.com)"
+  request_timeout_seconds: 20
+  max_items_per_source: 50

@@ -1,0 +1,19 @@
+# Only feeds whose reachability was verified from Free Edition in Phase 0 (HTTP 200).
+# Feed *parsing* is verified in Phase 2. Snowflake and dbt Labs feeds are added in Phase 2
+# after we probe their URLs; no URL here is guessed.
+companies:
+  - {name: Databricks, aliases: [Databricks, "Mosaic AI", "Unity Catalog", Lakebase]}
+  - {name: Snowflake, aliases: [Snowflake, Cortex]}
+  - {name: NVIDIA, aliases: [NVIDIA, CUDA]}
+  - {name: dbt Labs, aliases: [dbt, "dbt Labs"]}
+  - {name: Microsoft, aliases: [Microsoft, Fabric, Azure]}
+  - {name: AWS, aliases: [AWS, "Amazon Web Services", Redshift, Bedrock]}
+  - {name: Google Cloud, aliases: ["Google Cloud", BigQuery, Vertex]}
+
+sources:
+  - {name: databricks_blog, company: Databricks, kind: rss, url: "https://www.databricks.com/feed"}
+  - {name: nvidia_blog, company: NVIDIA, kind: rss, url: "https://blogs.nvidia.com/feed/"}
+  - {name: aws_whats_new, company: AWS, kind: rss, url: "https://aws.amazon.com/about-aws/whats-new/recent/feed/"}
+  - {name: gcp_release_notes, company: Google Cloud, kind: rss, url: "https://cloud.google.com/feeds/gcp-release-notes.xml"}
+  - {name: microsoft_blog, company: Microsoft, kind: rss, url: "https://blogs.microsoft.com/feed/"}
+  - {name: sec_nvidia_filings, company: NVIDIA, kind: sec_edgar, url: "https://data.sec.gov/submissions/CIK0001045810.json"}
