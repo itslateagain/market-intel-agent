@@ -20,6 +20,7 @@ policy:
   auto_approve_action_types: []
 
 ingestion:
-  user_agent: "mi-agent/0.1 (personal portfolio project; contact: you@example.com)"
+  # {contact} is filled at runtime from the Databricks secret mi-agent/contact_email (never committed).
+  user_agent: "mi-agent/0.1 (personal portfolio project; contact: {contact})"
   request_timeout_seconds: 20
   max_items_per_source: 50
